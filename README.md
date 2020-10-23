@@ -5,6 +5,7 @@
 Memo php, js, html, css, vue, laravel
 
 - [Laravel](#laravel)
+- [VueJS](#vuejs)
 - [Javascript](#javascript)
 <!-- - [Usage](#example-usage)
 - [Retrieve Data](#retrieve-data)
@@ -12,6 +13,7 @@ Memo php, js, html, css, vue, laravel
 - [Example](#example) -->
 
 ## Laravel
+
 Use function like usort with parameters in Laravel Class :
 ```php
 private function date_compare($a, $b)
@@ -23,6 +25,49 @@ private function date_compare($a, $b)
 
 usort($array, array($this,'date_compare'));
 ```
+
+
+## VueJS
+
+Check if user has role to access view
+```javascript
+//Route
+{path: '/parametres', component: ParametresComponent, name:'parametres', meta: {roles:['admin', 'leads']}},
+
+router.beforeEach((to, from, next) => {
+    if(to.matched.some(record => record.meta.roles)){
+        if(to.matched[0].meta.roles.indexOf(user.role) != -1) next();
+        else next('/errors/404');
+    }else next();
+})
+```
+
+
+Call 2 components in one view
+```html
+<!-- HTML -->
+<div class="mb-2">
+    <transition name="component-fade" mode="out-in">
+        @if(\Auth::user()->hasRole('admin') || \Auth::user()->hasRole('leads'))
+            <router-view name="default"></router-view>
+        @else
+            <router-view name="default" :key="$route.path"></router-view>
+        @endif
+    </transition>
+</div>
+```
+```javascript
+// App.js
+{path: '/leads/suivi', component: LeadIndexComponent, meta: {roles:['admin', 'leads']},
+    children: [{
+        path: ':id',
+        components: {second: LeadEditComponent},
+    }]
+},
+```
+
+
+
 
 
 ## Javascript
