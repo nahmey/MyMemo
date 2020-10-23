@@ -5,8 +5,8 @@
 Memo php, js, html, css, vue, laravel
 
 - [Laravel](#laravel)
-<!-- - [Installation](#installation)
-- [Usage](#example-usage)
+- [Javascript](#javascript)
+<!-- - [Usage](#example-usage)
 - [Retrieve Data](#retrieve-data)
 - [Props](#props)
 - [Example](#example) -->
@@ -25,24 +25,26 @@ usort($array, array($this,'date_compare'));
 ```
 
 
-<!-- ## Installing
+## Javascript
 
-Install with npm:
-```bash
-npm i light-vue-timepicker
-```
-
-Import globally in app.js:
-
+Check if button is double clicked
 ```javascript
-import LightVueTimepicker from 'light-vue-timepicker';
-Vue.component('light-vue-timepicker', LightVueTimepicker);
+function isDoubleClicked(element) {
+    //if already clicked return TRUE to indicate this click is not allowed
+    if (element.data("isclicked")) return true;
 
+    //mark as clicked for 1 second
+    element.data("isclicked", true);
+    setTimeout(function () {
+        element.removeData("isclicked");
+    }, 1000);
 
-
+    //return FALSE to indicate this click was allowed
+    return false;
+}
 ```
 
-## Usage
+<!-- ## Usage
 ```html
 <light-vue-timepicker></light-vue-timepicker>
 ```
