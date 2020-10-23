@@ -7,14 +7,11 @@ Memo php, js, html, css, vue, laravel
 - [Laravel](#laravel)
 - [VueJS](#vuejs)
 - [Javascript](#javascript)
-<!-- - [Usage](#example-usage)
-- [Retrieve Data](#retrieve-data)
-- [Props](#props)
-- [Example](#example) -->
+
 
 ## Laravel
 
-Use function like usort with parameters in Laravel Class :
+* Use function like usort with parameters in Laravel Class :
 ```php
 private function date_compare($a, $b)
 {
@@ -29,7 +26,7 @@ usort($array, array($this,'date_compare'));
 
 ## VueJS
 
-Check if user has role to access view
+* Check if user has role to access view
 ```javascript
 //Route
 {path: '/parametres', component: ParametresComponent, name:'parametres', meta: {roles:['admin', 'leads']}},
@@ -43,7 +40,7 @@ router.beforeEach((to, from, next) => {
 ```
 
 
-Call 2 components in one view
+* Call 2 components in one view
 ```html
 <!-- HTML -->
 <div class="mb-2">
@@ -66,13 +63,86 @@ Call 2 components in one view
 },
 ```
 
+* Global variable in app.js
+```javascript
+// App.js
+Vue.prototype.$user = your data
+// Exemple : Vue.prototype.$user = JSON.parse(document.querySelector("#app").dataset.user)
+```
+
+* Global function in app.js with example
+```javascript
+const MyPlugin = {
+    install(Vue, options){
+        Vue.prototype.convertDate = (date) => {
+            return moment(date).format('DD.MM.YYYY');
+        }
+        Vue.prototype.convertDateHour = (date) => {
+            return moment(date).format('DD.MM.YYYY HH:mm');
+        }
+        Vue.prototype.convertHeure = (date) => {
+            return moment(date).format('HH:mm');
+        }
+        Vue.prototype.datePickerOpened = (reference, $refs) => {
+            $refs[reference].showCalendar();
+            $refs[reference].$el.querySelector('input').focus();
+        }
+        // Check axios error and return what you want
+        Vue.prototype.checkError = (error) => {
+            if (error.response) {
+                console.log(error.response.data);
+                console.log(error.response.status);
+                console.log(error.response.headers);
+                if(error.response.status == 401){
+                    ...
+                }
+                if(error.response.status == 403){
+                    ...
+                }
+            }
+        }
+        // Get console error and post with XMLHttpRequest
+        Vue.config.warnHandler = function(msg, vm, trace) {
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            var req = new XMLHttpRequest();
+            let line = null;
+            let url = null;
+            var params = "msg=" + `Warn: ${msg}\nTrace: ${trace}` + '&amp;url=' + encodeURIComponent(url) + "&amp;line=" + line;
+            req.open("POST", your_url, true);
+            req.setRequestHeader('X-CSRF-Token', token);
+            req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8');
+            req.send(params);
+        }
+        // Check forms error from back-end and return with vue notify
+        Vue.prototype.showErrors = (errors) => {
+            let string = '<ul>';
+            errors.forEach(function(item){
+                string += '<li>'+item+'</li>';
+            })
+            string += '</ul>';
+
+            Vue.notify({
+                group: 'notifications',
+                title: 'Erreur',
+                type: 'error',
+                duration: 5000,
+                text: string
+            });
+        }
+    }
+}
+
+Vue.use(MyPlugin)
+
+```
+
 
 
 
 
 ## Javascript
 
-Check if button is double clicked
+* Check if button is double clicked
 ```javascript
 function isDoubleClicked(element) {
     //if already clicked return TRUE to indicate this click is not allowed
@@ -88,6 +158,26 @@ function isDoubleClicked(element) {
     return false;
 }
 ```
+
+* Check all console error and post with XMLHttpRequest
+```javascript
+window.onerror = function(msg, url, line)
+{
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    var req = new XMLHttpRequest();
+    var params = "msg=" + encodeURIComponent(msg) + '&amp;url=' + encodeURIComponent(url) + "&amp;line=" + line;
+    req.open("POST", base_url + "/admin/write_javacript_log", true);
+    req.setRequestHeader('X-CSRF-Token', token);
+    req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    req.send(params);
+};
+```
+
+
+
+
+
+
 
 <!-- ## Usage
 ```html
