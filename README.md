@@ -7,6 +7,7 @@ Memo php, js, html, css, vue, laravel
 - [Laravel](#laravel)
 - [VueJS](#vuejs)
 - [Javascript](#javascript)
+- [Composer](#composer)
 
 
 ## Laravel
@@ -70,7 +71,7 @@ Vue.prototype.$user = your data
 // Exemple : Vue.prototype.$user = JSON.parse(document.querySelector("#app").dataset.user)
 ```
 
-* Global function in app.js with example
+* Global function in app.js with examples
 ```javascript
 const MyPlugin = {
     install(Vue, options){
@@ -173,7 +174,12 @@ window.onerror = function(msg, url, line)
 };
 ```
 
+## Composer
 
+* Clear all cache (config, cache, view, route)
+```html
+php artisan optimize:clear
+```
 
 
 
