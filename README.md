@@ -24,6 +24,12 @@ private function date_compare($a, $b)
 usort($array, array($this,'date_compare'));
 ```
 
+* Laravel Excel with Carbon (when import excel column date) :
+```php
+$row['my_date_column'] = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['my_date_column']));
+```
+
+
 
 ## VueJS
 
