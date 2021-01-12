@@ -8,6 +8,7 @@ Memo php, js, html, css, vue, laravel
 - [VueJS](#vuejs)
 - [Javascript](#javascript)
 - [Composer](#composer)
+- [PHP](#php)
 
 
 ## Laravel
@@ -185,6 +186,27 @@ window.onerror = function(msg, url, line)
 * Clear all cache (config, cache, view, route)
 ```html
 php artisan optimize:clear
+```
+
+
+## Composer
+
+* Retrieves the years since a reference year (here 2020) based on the current year
+
+```php
+    public function getYears()
+    {
+        $debut = Carbon::createFromDate('2020');
+        $this_year = Carbon::now()->format('Y');
+        $diff = $debut->diffInYears($this_year);
+        $annees = [$debut->format('Y')];
+
+        for($i=0; $i < $diff ; $i++) {
+            $annees[] = $debut->addYear()->format('Y');
+        }
+
+        return $annees;
+    }
 ```
 
 
