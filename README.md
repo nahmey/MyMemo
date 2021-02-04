@@ -9,6 +9,7 @@ Memo php, js, html, css, vue, laravel
 - [Javascript](#javascript)
 - [Composer](#composer)
 - [PHP](#php)
+- [Postgres SQL](#postegres)
 
 
 ## Laravel
@@ -215,6 +216,11 @@ php artisan optimize:clear
 ```
 
 
+## Postgres
+
+* Laravel + Postgres : active pdopgsql and pgsql on Wamp
+    ==> IMPORTANT : go to C:/Wamp64/bin/php/your_php_version => php.ini and uncomment extension=pdo_pgsql and extension=pgsql
+    ==> open console and verify with : php -m
 
 
 
