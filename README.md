@@ -30,6 +30,11 @@ usort($array, array($this,'date_compare'));
 $row['my_date_column'] = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date::excelToDateTimeObject($row['my_date_column']));
 ```
 
+* Load Laravel helper (str_slug etc...) for laravel >= 6
+```html
+composer require laravel/helpers
+```
+
 
 
 ## VueJS
@@ -189,7 +194,7 @@ php artisan optimize:clear
 ```
 
 
-## Composer
+## Php
 
 * Retrieves the years since a reference year (here 2020) based on the current year
 
