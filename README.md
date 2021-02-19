@@ -36,6 +36,11 @@ $row['my_date_column'] = Carbon::instance(\PhpOffice\PhpSpreadsheet\Shared\Date:
 composer require laravel/helpers
 ```
 
+* Configure Locale in Laravel :
+Go to resources/lang/ ==> and create fr folder with translation
+==> IMPORTANT : Copy/paste the fr.json in resources/lang/ and not in resources/lang/fr
+
+
 
 
 ## VueJS
