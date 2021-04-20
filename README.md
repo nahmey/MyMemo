@@ -9,7 +9,9 @@ Memo php, js, html, css, vue, laravel
 - [Javascript](#javascript)
 - [Composer](#composer)
 - [PHP](#php)
-- [Postgres SQL](#postegres)
+- [Postgres SQL](#postgres)
+- [Linux](#linux)
+
 
 
 ## Laravel
@@ -227,6 +229,52 @@ php artisan optimize:clear
     ==> IMPORTANT : go to C:/Wamp64/bin/php/your_php_version => php.ini and uncomment extension=pdo_pgsql and extension=pgsql
     ==> open console and verify with : php -m
 
+## Linux
+
+* Apache
+    -Restart apache
+    ```html
+    sudo systemctl restart apache2
+    ```
+
+    -Statut apache
+    ```html
+    sudo systemctl status apache2
+    ```
+
+* UFW
+    - Statut
+    ```html
+    sudo ufw status
+    ```
+
+    - App list
+    ```html
+    sudo ufw app list
+    ```
+
+* POSTGRES
+    - Restart POSTGRES
+    ```html
+    sudo systemctl restart postgresql
+    ```
+
+    - Substitute user postgres
+    ```html
+    - su - postgres
+    ```
+
+* FAIL2BAN
+    -List block
+    ```html
+    sudo fail2ban-client status sshd
+    ```
+
+* PSCP
+    - Copie server directory to local windows
+    ```html
+    pscp -r -P PORTNUMBER user@ip_adress:/path/to/copy/* C:\path\destination
+    ```
 
 
 <!-- ## Usage
