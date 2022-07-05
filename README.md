@@ -15,6 +15,12 @@ Memo php, js, html, css, vue, laravel
 
 
 ## Laravel
+* For paginate in blade view with boostrap :
+```
+<nav class="text-xs-center">
+    {{ $variable_name->appends(request()->except('page'))->render("pagination::bootstrap-4") }}
+</nav>
+```
 
 * Use function like usort with parameters in Laravel Class :
 ```php
